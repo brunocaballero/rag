@@ -11,7 +11,7 @@ public class
 ChatResource {
 
     @Inject
-    ChatService service;
+    ChatServiceRag service;
 
     @POST
     @Produces(MediaType.TEXT_PLAIN)

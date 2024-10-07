@@ -16,13 +16,18 @@ EmbeddingsResource {
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     public String embed(String question){
-        return "TODO";
+        return service.embed(question);
     }
 
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/distance/")
     public String distance(String request) {
-        return "TODO";
+        String[] splitted = request.split(",");
+        if (splitted.length != 2) {
+            return "Use: 2 words separated by comma. Example: \"dog,cat\"";
+        }
+        double distance = service.distance(splitted[0], splitted[1]);
+        return "Distance = " + distance;
     }
 }

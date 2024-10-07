@@ -1,8 +1,11 @@
 package com.microdoc.rag;
 
+import dev.langchain4j.data.embedding.Embedding;
+import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.spi.ServiceHelper;
 import dev.langchain4j.spi.model.embedding.EmbeddingModelFactory;
+import dev.langchain4j.store.embedding.CosineSimilarity;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.Collection;
@@ -37,12 +40,14 @@ public class EmbeddingsService {
     }
 
     public String embed(String input) {
-        // TODO
-        return null;
+        TextSegment segment = TextSegment.from(input);
+        Embedding embedding = embeddingModel.embed(segment).content();
+        return embedding.toString();
     }
 
     public double distance(String s1, String s2) {
-        //TODO
-        return 0.0;
+        Embedding e1 = embeddingModel.embed(s1).content();
+        Embedding e2 = embeddingModel.embed(s2).content();
+        return CosineSimilarity.between(e1, e2);
     }
 }
