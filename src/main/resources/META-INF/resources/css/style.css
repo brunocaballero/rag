@@ -10,14 +10,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
     font-family: "poppins", sans-serif;
-    background-color: #c9d6ff;
-    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    flex-direction: row;
+    margin: 5px;
+    background: #c9d6ff linear-gradient(to right, #e2e2e2, #c9d6ff);
 }
 
 .container {
-    width: 1000px;
+    width: 98%;
+    height: 98vh;
     background-color: #17202a;
     border-radius: 10px;
     box-shadow: 5px 0 10px rgba(0, 0, 0, 0.3);
@@ -51,10 +53,11 @@ body {
 }
 
 .card-body {
+    height:  calc(98vh - 140px);
     padding: 0.8rem;
     font-size: 1rem;
-    height: 500px;
     overflow-y: auto;
+    flex-grow: 1;
 }
 
 .card-body .chat-bot {
@@ -124,7 +127,6 @@ body {
     outline: none;
     font-family: inherit;
     width: 100%;
-    display: flex;
     padding: 1.5rem;
     background-color: #212f3d;
     border-radius: 10px;
@@ -136,7 +138,11 @@ body {
 
 .sending-icon {
     position: absolute;
-    right: 30px;
+    width: 32px;
+    height: 32px;
+    bottom: 0;
+    margin: 15px;
+    right: 0;
 }
 
 .sending-icon .fa-paper-plane {
